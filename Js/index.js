@@ -1,23 +1,100 @@
-// const numberOfFilms = +prompt("Скільки фільмів ви подивились?");
+const numberOfFilms = +prompt("Скільки фільмів ви подивились?");
 
-// const personalMovieDB = {
-//   count:numberOfFilms,
-//   movies: {},
-//   actors: {},
-//   genres: [],
-//   privat: false,
-// };
+const personalMovieDB = {
+  count:numberOfFilms,
+  movies: {},
+  actors: {},
+  genres: [],
+  privat: false,
+};
 
-// const a = prompt("Один з останніх переглянутих фільмів?", ""),
-// b = +prompt("На скільки оцінете його?", ""),
+const a = prompt("Один з останніх переглянутих фільмів?", ""),
+b = +prompt("На скільки оцінете його?", "")
 // c = prompt("Один з останніх переглянутих фільмів?", ""),
 // d = +prompt("На скільки оцінете його?", "");
 
-// personalMovieDB.movies[a] =b;
+
 // personalMovieDB.movies[c] =d;
 
-// console.log(personalMovieDB);
+// цикл for
+for(let i = 0; i < 2 ; i++) {
+  const a = prompt("Один з останніх переглянутих фільмів?", ""),
+b = +prompt("На скільки оцінете його?", "");
 
+if(a !==null && b !==null & a !== '' && b !== '' && a.length < 50) {
+  personalMovieDB.movies[a] =b;
+  console.log("done");
+} else if(personalMovieDB.count < 10 ) {
+  console.log("Переглянуто доволі мало фільмів")
+} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+  console.log("Ви класичний глядач")
+} else if (personalMovieDB.count >= 30) {
+  console.log("Ви кіноман =)");
+} else {
+  console.log("Виникла помилка, спробуй ще")
+  i--;
+}
+}
+
+console.log(personalMovieDB);
+
+// Wile цикл
+// let i = 0;
+// while (i < 2) {
+//   const movieTitle = prompt("Один з останніх переглянутих фільмів?", "");
+//   const movieRating = +prompt("На скільки оцінете його?", "");
+
+//   if (
+//     movieTitle !== null &&
+//     movieRating !== null &&
+//     movieTitle !== "" &&
+//     movieRating !== "" &&
+//     movieTitle.length < 50
+//   ) {
+//     personalMovieDB.movies[movieTitle] = movieRating;
+//     console.log("done");
+//     i++;
+//   } else if (personalMovieDB.count < 10) {
+//     console.log("Переглянуто доволі мало фільмів");
+//   } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+//     console.log("Ви класичний глядач");
+//   } else if (personalMovieDB.count >= 30) {
+//     console.log("Ви кіноман =)");
+//   } else {
+//     console.log("Виникла помилка, спробуй ще");
+//   }
+// console.log(personalMovieDB);
+// }
+
+
+// do while цикл 
+// let i = 0;
+// do {
+//   const movieTitle = prompt("Один з останніх переглянутих фільмів?", "");
+//   const movieRating = +prompt("На скільки оцінете його?", "");
+
+//   if (
+//     movieTitle !== null &&
+//     movieRating !== null &&
+//     movieTitle !== "" &&
+//     movieRating !== "" &&
+//     movieTitle.length < 50
+//   ) {
+//     personalMovieDB.movies[movieTitle] = movieRating;
+//     console.log("done");
+//     i++;
+//   } else if (personalMovieDB.count < 10) {
+//     console.log("Переглянуто доволі мало фільмів");
+//   } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+//     console.log("Ви класичний глядач");
+//   } else if (personalMovieDB.count >= 30) {
+//     console.log("Ви кіноман =)");
+//   } else {
+//     console.log("Виникла помилка, спробуй ще");
+//   }
+// } while (i < 2);
+
+// console.log(personalMovieDB);
 // let result = "";
 // const length = 11;
 
