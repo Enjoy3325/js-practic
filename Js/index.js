@@ -1,7 +1,20 @@
-const numberOfFilms = +prompt("Скільки фільмів ви подивились?");
+let numberOfFilms;
 
+function start() {
+  numberOfFilms = +prompt("Скільки фільмів ви подивились?");
+
+  while (
+    numberOfFilms === "" ||
+    numberOfFilms === null ||
+    isNaN(numberOfFilms)
+  ) {
+    numberOfFilms = +prompt("Скільки фільмів ви подивились?");
+  }
+}
+
+start();
 const personalMovieDB = {
-  count:numberOfFilms,
+  count: numberOfFilms,
   movies: {},
   actors: {},
   genres: [],
@@ -9,34 +22,55 @@ const personalMovieDB = {
 };
 
 const a = prompt("Один з останніх переглянутих фільмів?", ""),
-b = +prompt("На скільки оцінете його?", "")
+  b = +prompt("На скільки оцінете його?", "");
 // c = prompt("Один з останніх переглянутих фільмів?", ""),
 // d = +prompt("На скільки оцінете його?", "");
 
-
 // personalMovieDB.movies[c] =d;
 
-// цикл for
-for(let i = 0; i < 2 ; i++) {
-  const a = prompt("Один з останніх переглянутих фільмів?", ""),
-b = +prompt("На скільки оцінете його?", "");
+function rememberMyFilms() {
+  // цикл for
+  for (let i = 0; i < 2; i++) {
+    const a = prompt("Один з останніх переглянутих фільмів?", ""),
+      b = +prompt("На скільки оцінете його?", "");
 
-if(a !==null && b !==null & a !== '' && b !== '' && a.length < 50) {
-  personalMovieDB.movies[a] =b;
-  console.log("done");
-} else if(personalMovieDB.count < 10 ) {
-  console.log("Переглянуто доволі мало фільмів")
-} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-  console.log("Ви класичний глядач")
-} else if (personalMovieDB.count >= 30) {
-  console.log("Ви кіноман =)");
-} else {
-  console.log("Виникла помилка, спробуй ще")
-  i--;
+    if (a !== null && (b !== null) & (a !== "") && b !== "" && a.length < 50) {
+      personalMovieDB.movies[a] = b;
+      console.log("done");
+    } else {
+      console.log(error);
+      i--;
+    }
+  }
 }
-}
+rememberMyFilms();
 
-console.log(personalMovieDB);
+function detectPersonalLevel() {
+  if (personalMovieDB.count < 10) {
+    console.log("Переглянуто доволі мало фільмів");
+  } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+    console.log("Ви класичний глядач");
+  } else if (personalMovieDB.count >= 30) {
+    console.log("Ви кіноман =)");
+  } else {
+    console.log("Виникла помилка, спробуй ще");
+  }
+}
+detectPersonalLevel();
+
+function showMyDB(hidden) {
+  if (!hidden) {
+    console.log(personalMovieDB);
+  }
+}
+showMyDB(personalMovieDB.privat);
+
+function writeYourGenres() {
+  for (let i = 1; i <= 3; i++) {
+    personalMovieDB.genres[i - 1] = prompt(`Ваш улюблений жанр ${i}`);
+  }
+}
+writeYourGenres();
 
 // Wile цикл
 // let i = 0;
@@ -66,8 +100,7 @@ console.log(personalMovieDB);
 // console.log(personalMovieDB);
 // }
 
-
-// do while цикл 
+// do while цикл
 // let i = 0;
 // do {
 //   const movieTitle = prompt("Один з останніх переглянутих фільмів?", "");
@@ -113,7 +146,6 @@ console.log(personalMovieDB);
 // }
 // console.log(result);
 
-
 // При помощи цикла выведите числа от 5 до 10 в консоль. 5 и 10 включительно. Цикл можно использовать любой
 
 // function firstTask() {
@@ -121,7 +153,6 @@ console.log(personalMovieDB);
 // console.log(i)
 // }
 // firstTask()
-
 
 // При помощи цикла for вывести числа от 20 до 10 в консоль. В обратном порядке (20, 19, 18...). Когда цикл дойдет до числа 13 - остановить весь цикл
 
@@ -147,19 +178,19 @@ console.log(personalMovieDB);
 //         }
 // }
 // }
-// thirdTask() 
+// thirdTask()
 
 // function thirdTask() {
-  // for( let i =2; i <= 10; i+=2) {
-  //   console.log(i);
-  // }
+// for( let i =2; i <= 10; i+=2) {
+//   console.log(i);
+// }
 // }
 // thirdTask()
 
 // Перепишите цикл  for на вариант с while. Результат должен остаться точно таким же. Не создайте бесконечный цикл! Иначе браузер может зависнуть.
 
 //  Цикл, который нужно переписать:
- 
+
 //  for (let i = 2; i <= 16; i++) {
 //      if (i % 2 === 0) {
 //          continue;
@@ -179,7 +210,6 @@ console.log(personalMovieDB);
 //   }
 // }
 // fourthTask()
-
 
 // Заполните массив цифрами от 5 до 10 включительно. Помните, что элементы массива можно сформировать так же, как и обращаться к ним: arr[0]
 
@@ -232,7 +262,7 @@ console.log(personalMovieDB);
 //       data[i] *2;
 //     } else if
 //     (typeof data[i] === "string") {
-    
+
 //     data[i] += '- done';
 //     }
 //     console.log(data);
@@ -255,7 +285,7 @@ console.log(personalMovieDB);
 // for( let i = data.length -1; i >= 0; i --) {
 //   result.push(data[i])
 // }
-  
+
 //   console.log(result);
 //   // Не трогаем
 //   return result;
@@ -271,8 +301,8 @@ console.log(personalMovieDB);
 // *******
 // *********
 // ***********
-// (Подсказка: в конце фигуры есть перенос строки \n, 
-// который тоже учитывается в тестах. 
+// (Подсказка: в конце фигуры есть перенос строки \n,
+// который тоже учитывается в тестах.
 // В КОНЦЕ КАЖДОЙ СТРОКИ НЕТ ПРОБЕЛОВ, ТОЛЬКО ПЕРЕНОС)
 
 // const lines = 5;
